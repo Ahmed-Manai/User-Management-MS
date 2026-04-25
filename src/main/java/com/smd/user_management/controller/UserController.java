@@ -4,6 +4,7 @@ import com.smd.user_management.model.User;
 import com.smd.user_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) {
         return service.createUser(user);
     }
 
@@ -30,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable String id, @RequestBody User user) {
+    public User updateUser(@PathVariable String id, @Valid @RequestBody User user) {
         return service.updateUser(id, user);
     }
 
